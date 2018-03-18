@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../app/App.css';
 
-export default class Home extends Component {
+class Home extends Component {
 
   render() { 
     return (
       <section className="main-container maxwidth-wrap">
-            a
+    
+
       </section>
     );
   }
 }
+
+export default connect(
+  null,
+  null
+)(Home);

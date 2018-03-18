@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import Error from '../errorloading/Error';
 
-export default class Header extends Component {
+class Header extends Component {
 
   render() { 
+    const { error } = this.props;
+
     return (
       <header role="banner" id="header">
         <section className="head-container maxwidth-wrap">
@@ -13,11 +17,16 @@ export default class Header extends Component {
             <ul>
               <li><Link to="/">Home</Link></li>
               {/* <li><Link to="/about">About</Link></li> */}
-              {/* <Route path="/movies" render={() => <li>~</li>}/> */}
             </ul>
           </nav>
+          {error && <Error error={error}/>}
         </section> 
       </header>
     );
   }
 }
+
+export default connect(
+  state => ({ error: state.error }),
+  null
+)(Header);
